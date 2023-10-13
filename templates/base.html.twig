@@ -11,6 +11,21 @@
         {% endblock %}
     </head>
     <body>
+        <h1>
+            {% block header %}Mon super site{% endblock %}
+        </h1>
+        <p>
+            {% if app.user %}
+
+            Bonjour {{ app.user.username }} - <a href="{{ path('app_logout') }}">Se déconnecter</a>
+            {% else %}
+                On se connaît ? <a href="{{ path('app_login') }}">Se connecter</a>
+
+            {% endif %}
+        </p>
         {% block body %}{% endblock %}
+        {% block footer %}
+            <p>Pied de page</p>
+        {% endblock %}
     </body>
 </html>

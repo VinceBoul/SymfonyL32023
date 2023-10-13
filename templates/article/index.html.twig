@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des articles{% endblock %}
+
+{% block header %}Mes articles ({{ articles|length }}){% endblock %}
+
+
+{% block body %}
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Content</th>
+                <th>Created</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for article in articles %}
+            <tr>
+                <td>{{ article.id }}</td>
+                <td>{{ article.title }}</td>
+                <td>{{ article.content }}</td>
+                <td>{{ article.created ? article.created|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    {{ include('partials/_button.html.twig', {
+                        'button_url' : path('app_article_show', {'id': article.id}),
+                        'button_text' : "Consulter"
+                    }) }}
+                    {{ include('partials/_button.html.twig', {
+                        'button_url' : path('app_article_edit', {'id': article.id}),
+                        'button_text' : "Modifier"
+                    }) }}
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_article_new') }}">Create new</a>
+{% endblock %}
