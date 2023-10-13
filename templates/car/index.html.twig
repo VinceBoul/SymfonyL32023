@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Car index{% endblock %}
+
+{% block body %}
+    <h1>Car index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Model</th>
+                <th>DateFirstIn</th>
+                <th>Immatriculation</th>
+                <th>Quantity</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for car in cars %}
+            <tr>
+                <td>{{ car.id }}</td>
+                <td>{{ car.model }}</td>
+                <td>{{ car.dateFirstIn ? car.dateFirstIn|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ car.immatriculation }}</td>
+                <td>{{ car.quantity }}</td>
+                <td>
+                    <a href="{{ path('app_car_show', {'id': car.id}) }}">show</a>
+                    <a href="{{ path('app_car_edit', {'id': car.id}) }}">edit</a>
+                    <a href="{{ path('app_car_quantity', {'id': car.id, 'var' : 'plus'}) }}">quantity +1</a>
+                    <a href="{{ path('app_car_quantity', {'id': car.id, 'var' : 'moins'}) }}">quantity -1</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_car_new') }}">Create new</a>
+{% endblock %}
