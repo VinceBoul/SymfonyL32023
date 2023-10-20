@@ -16,6 +16,7 @@ class CarType extends AbstractType
             ->add('dateFirstIn')
             ->add('immatriculation')
             ->add('quantity')
+            ->add('km')
         ;
     }
 

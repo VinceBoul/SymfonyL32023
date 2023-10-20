@@ -26,6 +26,12 @@ class Car
     #[ORM\Column(nullable: true)]
     private ?int $quantity = null;
 
+    #[ORM\Column(nullable: true)]
+    private ?int $km = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?int $price = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -75,6 +81,30 @@ class Car
     public function setQuantity(?int $quantity): static
     {
         $this->quantity = $quantity;
+
+        return $this;
+    }
+
+    public function getKm(): ?int
+    {
+        return $this->km;
+    }
+
+    public function setKm(?int $km): static
+    {
+        $this->km = $km;
+
+        return $this;
+    }
+
+    public function getPrice(): ?int
+    {
+        return $this->price;
+    }
+
+    public function setPrice(int $price): static
+    {
+        $this->price = $price;
 
         return $this;
     }
