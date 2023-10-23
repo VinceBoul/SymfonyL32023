@@ -17,6 +17,7 @@ class CarType extends AbstractType
             ->add('immatriculation')
             ->add('quantity')
             ->add('km')
+            ->add('price')
         ;
     }
 

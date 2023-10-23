@@ -15,10 +15,19 @@ use Symfony\Component\Routing\Annotation\Route;
 class CarController extends AbstractController
 {
     #[Route('/', name: 'app_car_index', methods: ['GET'])]
-    public function index(CarRepository $carRepository): Response
+    public function index(Request $request, CarRepository $carRepository): Response
     {
+        $kMin = $request->query->get('kMin');
+        $kMax = $request->query->get('kMax');
+        $priceOrder = $request->query->get('price');
+
+        $cars = $carRepository->filterCars($kMin, $kMax, $priceOrder);
+
         return $this->render('car/index.html.twig', [
-            'cars' => $carRepository->findAll(),
+            'cars' => $cars,
+            'kMax' => $kMax,
+            'kMin' => $kMin,
+            'priceOrder' => $priceOrder,
         ]);
     }
 

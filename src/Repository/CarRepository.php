@@ -21,6 +21,29 @@ class CarRepository extends ServiceEntityRepository
         parent::__construct($registry, Car::class);
     }
 
+        public function filterCars($min, $max, $priceOrder, $quantityOrder=null): array
+    {
+        $query = $this->createQueryBuilder('c');
+
+        if ($min){
+            $query->andWhere('c.km >= :min')
+                ->setParameter('min', $min);
+        }
+
+        if ($max){
+            $query->andWhere('c.km <= :max')
+                ->setParameter('max', $max);
+        }
+
+        if ($priceOrder){
+            $query->orderBy('c.price', $priceOrder);
+
+        }
+            return $query->getQuery()
+            ->getResult()
+        ;
+    }
+
 //    /**
 //     * @return Car[] Returns an array of Car objects
 //     */

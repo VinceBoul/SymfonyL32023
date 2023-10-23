@@ -5,6 +5,22 @@
 {% block body %}
     <h1>Car index</h1>
 
+    <form>
+        <label>Kilométrage minimum</label>
+        <input name="kMin" value="{{ kMin }}">
+
+        <label>Kilométrage max</label>
+        <input name="kMax" value="{{ kMax }}">
+
+        <label>Prix</label>
+        <select name="price">
+            <option {{ priceOrder == 'ASC' ? 'selected' }}  value="ASC">Croissant</option>
+            <option {{ priceOrder == 'DESC' ? 'selected' }} value="DESC">Déroissant</option>
+        </select>
+
+        <input type="submit" value="Valider">
+    </form>
+
     <table class="table">
         <thead>
             <tr>
@@ -13,6 +29,8 @@
                 <th>DateFirstIn</th>
                 <th>Immatriculation</th>
                 <th>Quantity</th>
+                <th>Kilométrage</th>
+                <th>Prix</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -24,6 +42,8 @@
                 <td>{{ car.dateFirstIn ? car.dateFirstIn|date('Y-m-d H:i:s') : '' }}</td>
                 <td>{{ car.immatriculation }}</td>
                 <td>{{ car.quantity }}</td>
+                <td>{{ car.km }}</td>
+                <td>{{ car.price }}</td>
                 <td>
                     <a href="{{ path('app_car_show', {'id': car.id}) }}">show</a>
                     <a href="{{ path('app_car_edit', {'id': car.id}) }}">edit</a>
