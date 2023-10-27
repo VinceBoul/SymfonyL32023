@@ -32,6 +32,9 @@ class Car
     #[ORM\Column(nullable: true)]
     private ?int $price = null;
 
+    #[ORM\ManyToOne(inversedBy: 'cars')]
+    private ?Marque $brand = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -105,6 +108,18 @@ class Car
     public function setPrice(int $price): static
     {
         $this->price = $price;
+
+        return $this;
+    }
+
+    public function getBrand(): ?Marque
+    {
+        return $this->brand;
+    }
+
+    public function setBrand(?Marque $brand): static
+    {
+        $this->brand = $brand;
 
         return $this;
     }

@@ -12,6 +12,7 @@
             <tr>
                 <th>Id</th>
                 <th>Title</th>
+                <th>Author</th>
                 <th>Content</th>
                 <th>Created</th>
                 <th>actions</th>
@@ -22,6 +23,7 @@
             <tr>
                 <td>{{ article.id }}</td>
                 <td>{{ article.title }}</td>
+                <td>{{ article.author.username }}</td>
                 <td>{{ article.content }}</td>
                 <td>{{ article.created ? article.created|date('Y-m-d H:i:s') : '' }}</td>
                 <td>

@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\Car;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\Query\AST\Join;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -21,25 +22,28 @@ class CarRepository extends ServiceEntityRepository
         parent::__construct($registry, Car::class);
     }
 
-        public function filterCars($min, $max, $priceOrder, $quantityOrder=null): array
+        public function filterCars($min, $max, $priceOrder, $quantityOrder, $marqueId): array
     {
-        $query = $this->createQueryBuilder('c');
+        $queryBuilder = $this->createQueryBuilder('c');
 
         if ($min){
-            $query->andWhere('c.km >= :min')
+            $queryBuilder->andWhere('c.km >= :min')
                 ->setParameter('min', $min);
         }
-
         if ($max){
-            $query->andWhere('c.km <= :max')
+            $queryBuilder->andWhere('c.km <= :max')
                 ->setParameter('max', $max);
         }
-
         if ($priceOrder){
-            $query->orderBy('c.price', $priceOrder);
-
+            $queryBuilder->orderBy('c.price', $priceOrder);
         }
-            return $query->getQuery()
+
+        if ($marqueId){
+            $queryBuilder->innerJoin('c.brand', 'b', 'WITH', 'b.id = :brand_id')
+                ->setParameter('brand_id', $marqueId);
+        }
+
+        return $queryBuilder->getQuery()
             ->getResult()
         ;
     }

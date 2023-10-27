@@ -18,15 +18,23 @@
             <option {{ priceOrder == 'DESC' ? 'selected' }} value="DESC">Déroissant</option>
         </select>
 
+        <label>Marque</label>
+
+        <select name="marque">
+            <option value="0" >Choix de la marque</option>
+            {% for brand in brands %}
+                <option value="{{ brand.id }}">{{ brand.name }}</option>
+            {% endfor %}
+        </select>
+
         <input type="submit" value="Valider">
     </form>
 
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
                 <th>Model</th>
-                <th>DateFirstIn</th>
+                <th>Marque</th>
                 <th>Immatriculation</th>
                 <th>Quantity</th>
                 <th>Kilométrage</th>
@@ -37,9 +45,8 @@
         <tbody>
         {% for car in cars %}
             <tr>
-                <td>{{ car.id }}</td>
                 <td>{{ car.model }}</td>
-                <td>{{ car.dateFirstIn ? car.dateFirstIn|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ car.brand ? car.brand.name : 'aucune marque' }}</td>
                 <td>{{ car.immatriculation }}</td>
                 <td>{{ car.quantity }}</td>
                 <td>{{ car.km }}</td>
