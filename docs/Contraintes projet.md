@@ -30,9 +30,9 @@
         * Création/vérification de compte
         * ou notification quelconque
 
-
 # Évaluation
-    * Oral (15/20 minutes)
-        * **Chacun prend la parole sur ce qu'il a fait**
-    * Dossier technique
-    * Évaluation du code
+
+* Oral (15/20 minutes)
+    * Chacun prend la parole sur ce qu'il a fait
+* Dossier technique
+* Évaluation du code
