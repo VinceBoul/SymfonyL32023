@@ -35,6 +35,9 @@ class Car
     #[ORM\ManyToOne(inversedBy: 'cars')]
     private ?Marque $brand = null;
 
+    #[ORM\ManyToOne(inversedBy: 'cars')]
+    private ?Country $pays = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -120,6 +123,18 @@ class Car
     public function setBrand(?Marque $brand): static
     {
         $this->brand = $brand;
+
+        return $this;
+    }
+
+    public function getPays(): ?Country
+    {
+        return $this->pays;
+    }
+
+    public function setPays(?Country $pays): static
+    {
+        $this->pays = $pays;
 
         return $this;
     }

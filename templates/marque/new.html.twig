@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Marque{% endblock %}
+
+{% block body %}
+    <h1>Create new Marque</h1>
+
+    {{ include('marque/_form.html.twig') }}
+
+    <a href="{{ path('app_marque_index') }}">back to list</a>
+{% endblock %}
