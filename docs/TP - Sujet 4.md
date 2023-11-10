@@ -43,15 +43,16 @@ Zipper le dossier et l'envoyer à l'adresse mail `vtoullec@gmail.com`
 
 #### Sujet 3
 Créer l'entité suivante, avec les propriétés indiquées :
-* Annonce
+* Logement
     * Titre (chaîne de caractères)
 	* Prix (integer) - champ non obligatoire
-	* Publié (Booléen)
-	* Catégorie (Liste déroulante avec les choix : "Immobilier", "Bricolage", "Divers")
+	* Habitable (Booléen)
+	* Catégorie (Liste déroulante avec les choix : "Maison", "Immeuble", "Résidence")
+	* Surface (integer) : Champ obligatoire	 	
 
-* Dans le **formulaire** : Modifier le label du champ "Titre" par "Titre de l'annonce"
+* Dans le **formulaire** : Modifier le label du champ "Catégorie" par "Type de logement"
 * Dans la **liste** : 
-  * Ajouter un lien pour publier l'article l'article (faire passer "publié" à TRUE)
+  * Ajouter un lien pour rendre une maison habitable (faire passer "habitable" à TRUE)
   * Mettre en place un filtre "prix maximum" de la liste sur la propriété prix
 
-* Mettre en place une contrainte (Assert) sur la propriété "prix" pour que le pris ne puisse pas être inférieur à 1
+* Mettre en place une contrainte (Assert) sur la propriété "prix" pour que le prix ne puisse pas être supérieur à 1 000 000
