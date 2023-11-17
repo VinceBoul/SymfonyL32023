@@ -4,7 +4,12 @@
 - Un site fonctionnel qui répond à un sujet choisi par chaque groupe 
     - Gestion des items dans l’administration
     - Gestion des utilisateurs dans l’administration
-    - Espace Administration sécurisé  
+    - Espace Administration sécurisé
+- Authentification
+    - Inscription
+    - Connexion
+    - Déconnexion
+    - Liens de connexion/déconnexion accessibles
 - Un formulaire de contact 
     - Mail
     - Nom
