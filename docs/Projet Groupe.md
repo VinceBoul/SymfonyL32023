@@ -1,4 +1,4 @@
-## Dossier technique à rendre le 8 décembre
+## Dossier technique à rendre le 8 décembre 20H dernier délai
 
 ### Contenu du projet de groupe : 
 - Un site fonctionnel qui répond à un sujet choisi par chaque groupe 
